@@ -1,0 +1,582 @@
+//<МИКСИНЫ>===============================================================================================
+@mixin anim($time,$delay){-webkit-transition: all $time ease $delay;-moz-transition: all $time ease $delay;-ms-transition: all $time ease $delay;-o-transition: all $time ease $delay;transition: all $time ease $delay;}
+@mixin anim_cubic($time, $delay) {-webkit-transition:all $time cubic-bezier(0.68,-0.55,0.265,1.55) $delay;-moz-transition:all $time cubic-bezier(0.68,-0.55,0.265,1.55) $delay;-ms-transition:all $time cubic-bezier(0.68,-0.55,0.265,1.55) $delay;-o-transition:all $time cubic-bezier(0.68,-0.55,0.265,1.55) $delay;transition:all $time cubic-bezier(0.68,-0.55,0.265,1.55) $delay;}
+@mixin rotate($deg){-moz-transform: rotate($deg);-ms-transform: rotate($deg);-webkit-transform: rotate($deg);-o-transform: rotate($deg);transform: rotate($deg);}
+@mixin scale($num){-moz-transform: scale($num);-ms-transform: scale($num);-webkit-transform: scale($num);-o-transform: scale($num);transform: scale($num);}
+@mixin skew($num){-webkit-transform: skewX($num);-moz-transform: skewX($num);-ms-transform: skewX($num);-o-transform: skewX($num);transform: skewX($num);}
+@mixin cnt($h){display: flex;flex-direction: column;height: $h;text-align: center;align-items: stretch;justify-content: center;}
+@mixin tr($x,$y,$z){transform: translate3d($x, $y, $z);};
+@mixin flexbox() {display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex;font-size:0;}
+@mixin flexorder($val){-webkit-box-ordinal-group: $val;-moz-box-ordinal-group: $val;-ms-flex-order: $val;-webkit-order: $val;order: $val;}
+//</МИКСИНЫ>===============================================================================================
+
+//<ШРИФТЫ>===============================================================================================
+
+//<Подключаем шрифты>=======================================================================================
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=PT+Sans&display=swap');
+@font-face {
+	font-family: 'AkzidenzGroteskPro';
+	src: url('../fonts/AkzidenzGroteskPro-BoldCn.eot');
+	src: local('☺'), url('../fonts/AkzidenzGroteskPro-BoldCn.woff') format('woff'), url('../fonts/AkzidenzGroteskPro-BoldCn.ttf') format('truetype'), url('../fonts/AkzidenzGroteskPro-BoldCn.svg') format('svg');
+	font-weight: 700;
+	font-style: normal;
+}
+
+//</Подключаем шрифты>=======================================================================================
+
+//<Шрифт по умолчанию>==========================================================================================
+$fontfamily:'PT Sans', sans-serif;
+//</Шрифт по умолчанию>==========================================================================================
+
+//</ШРИФТЫ>==============================================================================================================
+
+//<ПЕРЕМЕННЫЕ>===========================================================================================================
+$minwidth:320px;
+$mw:850;
+$md1:$mw+50;
+$md2:992.98;
+$md3:767.98;
+$md3_5:620;
+$md4:479.98;
+//</ПЕРЕМЕННЫЕ>==============================================================================================================
+
+//<ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ>===============================================================================================
+*{padding: 0px;margin: 0px;border: 0px;}
+*,*:before,*:after{-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;}
+:focus,:active{outline: none;}
+a:focus,a:active{outline: none;}
+aside,nav,footer,header,section{display: block;}
+html,body{height: 100%;margin: 0;padding: 0;min-width: $minwidth;position: relative;width: 100%;color: #000;}
+body{font-size: 100%;line-height: 1;font-size: 14px;font-family: $fontfamily;-ms-text-size-adjust: 100%;-moz-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;
+	&.lock{overflow: hidden;
+		@media (max-width:$md3+px){
+			width: 100%;
+			position: fixed;
+			overflow: hidden;
+		}
+	}
+}
+input,button,textarea{font-family: $fontfamily;}
+input::-ms-clear{display: none;}
+button{cursor: pointer;}
+button::-moz-focus-inner {padding:0;border:0;}
+a, a:visited{text-decoration: none;}
+a:hover{text-decoration: none;}
+ul li{list-style: none;}
+img{vertical-align: top;}
+h1,h2,h3,h4,h5,h6{font-weight: inherit;font-size: inherit;}
+//</ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ>===============================================================================================
+
+//<ОБОЛОЧКА>===========================================================================================================
+.wrapper{width: 100%;min-height: 100%;overflow: hidden;
+	&.loaded{}
+}
+//</ОБОЛОЧКА>===========================================================================================================
+
+//<ОСНОВНАЯ СЕТКА>===========================================================================================================
+.container{
+	width: 870px;
+	max-width:870px;
+	margin: 0 auto;
+	width: 100%;
+	@media (max-width:$md1+px){max-width: 730px;}
+	// @media (max-width:$md2+px){max-width: 750px;}
+	// @media (max-width:$md3+px){max-width: none;padding:0 10px;*/
+}
+//</ОСНОВНАЯ СЕТКА>===========================================================================================================
+
+//<ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>====================================================================================================
+@import "baguetteBox.scss";
+@import "popover.min.scss";
+@import "popup.scss";
+@import "header.scss";
+@import "footer.scss";
+//</ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>====================================================================================================
+
+//<ОСНОВНОЙ БЛОК>====================================================================================================
+
+.main {
+}
+.private {
+	&__row {
+		@include flexbox();
+		justify-content: flex-start;
+	}
+	/*----------*/
+	&__image {
+		flex: 0 0 50%;
+		width: 100%;
+	}
+	&__image-item {
+	}
+	/*----------*/
+	&__text {
+		flex: 0 0 50%;
+		padding: 82px 0 0 62px;
+		background: #000;
+		color: #fff;
+	}
+	&__title {
+		display: inline-block;	
+		width: 200px;
+		margin-bottom: 37px;
+	}
+	&__descr {
+		width: 310px;
+		font-family: 'PT Sans', sans-serif;
+		font-size: 15px;
+		font-weight: 400;
+		line-height: 25px;
+		text-align: left;
+		margin-bottom: 55px;
+	}
+	&__buttons {
+		margin-bottom: 75px;
+	}
+	@media (max-width: $md3+px) {
+		&__text {
+			padding: 63px 0 0 49px;
+		}
+		&__title {
+			margin-bottom: 30px;
+		}
+		&__descr {
+			max-width: 240px;
+			margin-bottom: 36px
+		}
+		&__buttons {
+			margin-bottom: 63px;
+		}
+	}
+	@media (max-width: $md3_5+px) {
+		&__text {
+			padding: 50px 0 0 36px;
+		}
+		&__title {
+			margin-bottom: 24px;
+		}
+		&__descr {
+			max-width: 190px;
+			font-size: 14px;
+			line-height: 18px;
+			text-align: justify;
+			margin-bottom: 36px
+		}
+		&__buttons {
+			margin-bottom: 50px;
+		}
+	}
+	@media (max-width: $md4+px) {
+		&__image {
+			display: none;
+		}
+		&__text {
+			flex: 0 0 100%;
+			padding: 82px 0 0 62px;
+		}
+		&__title {
+			display: inline-block;	
+			width: 200px;
+			margin-bottom: 37px;
+		}
+		&__descr {
+			width: 310px;
+			font-family: 'PT Sans', sans-serif;
+			font-size: 15px;
+			font-weight: 400;
+			line-height: 25px;
+			text-align: left;
+			margin-bottom: 55px;
+		}
+		&__buttons {
+			margin-bottom: 75px;
+		}
+	}
+}
+/*-------------------------------------------------------*/
+.products {
+	padding: 75px 0 10px;
+	&__row {
+		@include flexbox();
+		justify-content: flex-start;
+		//flex-wrap: wrap;
+	}
+	&__item {
+		display: block;
+		flex: 0 0 25%;
+	}
+	@media (max-width: $md1+px) {
+		&__row {
+			flex-wrap: wrap;
+		}
+		&__item {
+			display: block;
+			flex: 0 0 50%;
+
+		}
+	}
+	@media (max-width: $md4+px) {
+		
+		&__item {
+			flex: 0 0 100%;
+
+		}
+	}
+}
+.item {
+	// flex: 0 0 25%;
+	margin-bottom: 70px;
+	&__image {
+		padding: 0 0 100% 0;
+		margin-bottom: 25px;
+	}
+	&__image-item {
+		width: 100%;	
+	}
+	&__title {
+		max-width: 121px;
+		color: #000000;
+		font-family: 'AkzidenzGroteskPro';
+		font-size: 25px;
+		font-weight: 400;
+		text-transform: uppercase;
+		letter-spacing: 2.5px;
+		margin-bottom: 36px;
+	}
+	&__descr {
+		color: #000000;
+		font-family: 'PT Sans', sans-serif;
+		font-size: 15px;
+		font-weight: 400;
+		line-height: 25px;
+		text-align: left;
+		margin-bottom: 32px;
+	}
+	&__buttons {
+		display: block;
+	}
+
+	@media (max-width: $md1+px) {
+		margin-bottom: 0;
+		&__descr {
+			max-width: 275px;	
+		}
+		&__image {
+			margin-bottom: 25px;
+		}
+		&__buttons {
+			margin-bottom: 50px;
+		}
+	}
+}
+
+/*-------------------------------------------------------*/
+.why-top {
+	&__row {
+		@include flexbox();
+	}
+	&__text {
+		flex: 0 0 50%;
+		background: #000;
+	}
+	&__title {
+		text-align: right;
+		margin: 53px 40px 53px 0;
+	}
+	&__image {
+		width: 50%;
+	}
+	&__image-item {}
+	@media (max-width: $md4+px) {
+		&__text {
+			flex: 0 0 100%;
+			background: #000;
+		}
+		&__image {
+			display: none;	
+		}
+	}
+}
+
+.why-body {
+	background: #ebebeb;
+	&__row {
+		@include flexbox();
+		justify-content: flex-start;
+		flex-wrap: wrap;
+		padding-top: 50px;
+	}
+	&__column {
+		flex: 0 0 50%;
+	}
+	&__item {
+		@include flexbox();
+		justify-content: flex-start;
+		margin-bottom: 50px;
+	}
+	&__image {
+		width: 100px;
+		height: 100px;
+		background: #000;
+		margin-right: 13px;
+		margin-left: 3px;
+		position: relative;
+	}
+	&__image-item {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		@include tr(-50%, -50%, 0);
+	}
+	&__text {}
+	&__title {
+		color: #000000;
+		font-family: 'AkzidenzGroteskPro';
+		font-size: 25px;
+		font-weight: 400;
+		text-align: left;
+		text-transform: uppercase;
+		letter-spacing: 2.5px;
+		margin-bottom: 25px;
+	}
+	&__descr {
+		color: #000000;
+		font-family: "PT Sans";
+		font-size: 15px;
+		font-weight: 400;
+		line-height: 25px;
+		text-align: left;
+		max-width: 300px;
+		text-align: justify;
+	}
+	@media (max-width: $md1+px) {
+		&__column {
+			flex: 0 0 100%;
+		}
+	}
+}
+
+/*-------------------------------------------------------*/
+
+.contacts-top {
+	padding: 82px 0 24px;
+	&__title {
+		margin-bottom: 32px;
+	}
+	&__row {
+		@include flexbox();
+		flex-wrap: wrap;
+	}
+	&__column {
+		flex: 0 0 50%;
+		&--first {
+			.contacts-top__item {
+				margin-bottom: 23px;
+			}
+			.contacts-top__item:last-child {
+				margin-bottom: 0px;
+			}	
+		}
+		&--second {
+			.contacts-top__item {
+				margin-bottom: 30px;
+			}
+			.contacts-top__item:last-child {
+				margin-bottom: 0px;
+			}	
+		}
+	}
+	&__item {
+		@include flexbox();
+		justify-content: flex-start;
+		align-items: center;
+	}
+	&__image {
+		margin-right: 8px;
+	}
+	&__image-item {}
+	&__text {
+		color: #000000;
+		font-family: 'PT Sans', sans-serif;
+		font-size: 15px;
+		font-weight: 400;
+		line-height: 25px;
+	}
+	&__icon {
+		display: inline-block;
+		margin-right: 31px;
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+	&__icon-item {}
+	@media (max-width: $md3+px) {
+		padding: 50px 0 25px;
+
+	}
+	@media (max-width: $md3_5+px) {
+		padding: 40px 0 25px;
+		&__column {
+			flex: 0 0 100%;
+			&--first {
+				margin-bottom: 30px;
+			}
+		}
+	}
+}
+
+.contacts-body {
+	@include flexbox();
+	&__map {
+		flex: 0 0 50%;
+	}
+	&__form {
+		flex: 0 0 50%;
+		padding: 54px 0 50px 60px;
+		background: #000;
+	}
+	&__title {
+		color: #ffffff;
+		font-family: 'AkzidenzGroteskPro';
+		font-size: 25px;
+		font-weight: 400;
+		text-align: left;
+		text-transform: uppercase;
+		letter-spacing: 2.5px;
+		margin-bottom: 24px;
+	}
+	&__form-body {}
+	&__form-line {
+		margin-bottom: 24px;
+	}
+	&__form-button {
+
+	}
+	&__btn {}
+	@media (max-width: $md1+px) {
+		flex-wrap: wrap;
+		&__map {
+			flex: 0 0 100%;
+			height: 475px;
+		}
+		&__form {
+			flex: 0 0 100%;
+			padding: 27px 0 25px 30px;
+		}
+	}
+	@media (max-width: $md4+px) {
+		&__map {
+			height: 420px;
+		}
+	}
+}
+/*-------------------------------------------------------*/
+.title {
+	color: #ffffff;
+	font-family: 'AkzidenzGroteskPro';
+	font-size: 50px;
+	font-weight: 400;
+	// line-height: 50px;
+	// text-align: left;
+	text-transform: uppercase;
+	letter-spacing: 5px;
+	&--black {
+		color: #000;
+	}
+	@media (max-width: $md3+px) {
+		font-size: 40px;
+	}
+	@media (max-width: $md3_5+px) {
+		font-size: 30px;
+	}
+	@media (max-width: $md4+px) {
+		font-size: 45px;
+	}
+}
+.btn-quote {
+	display: inline-block;
+	width: 155px;
+	height: 50px;
+	background-color: #ffffff;
+	color: #000000;
+	font-family: 'Bebas Neue', cursive;
+	font-size: 15px;
+	font-weight: 400;
+	font-style: normal;
+	line-height: 50px;
+	text-transform: uppercase;
+	letter-spacing: 1.5px;
+	text-align: center;
+	&--black {
+		background-color: #000;
+		color: #fff;
+	}
+	@media (max-width: $md3_5+px) {
+		display: block;
+		width: 120px;
+		height: 40px;
+		font-size: 15px;
+		line-height: 40px;
+	}
+	@media (max-width: $md4+px) {
+		display: inline-block;
+		width: 155px;
+		height: 50px;
+		font-size: 15px;
+		line-height: 50px;
+	}
+}
+.btn-menus {
+	display: inline-block;
+	color: #fff;
+	font-family: 'Bebas Neue', cursive;
+	font-size: 15px;
+	font-weight: 400;
+	line-height: 25px;
+	text-decoration: underline;
+	text-transform: uppercase;
+	letter-spacing: 1.5px;
+	&--private {
+		margin-left: 14px;
+	}
+	&--black {
+		display: block;
+		color: #000;
+	}
+	&--products {
+		margin-top: 29px;
+	}
+	@media (max-width: $md3+px) {
+		display: block;
+		&--private {
+			margin-left: 0;
+			margin-top: 30px;
+		}
+	}
+	@media (max-width: $md3_5+px) {
+		display: block;
+		&--private {
+			margin-left: 0;
+			margin-top: 20px;
+		}
+	}
+	@media (max-width: $md4+px) {
+		display: inline-block;
+		&--private {
+			margin-left: 14px;
+			margin-top: 0px;
+		}
+		&--black {
+			display: block;
+		}
+	}	
+}
+
+//===================================================================================================================
+
+//</ОСНОВНОЙ БЛОК>====================================================================================================
+
+//<ПОДКЛЮЧЕНИЕ ФАЙЛОВ UI СТИЛЕЙ, ФОРМ И ГОТОВЫХ КЛАССОВ>====================================================================================================
+@import "forms.scss";
+@import "ui.scss";
+//</ПОДКЛЮЧЕНИЕ ФАЙЛОВ UI СТИЛЕЙ, ФОРМ И ГОТОВЫХ КЛАССОВ>===================================================================================================

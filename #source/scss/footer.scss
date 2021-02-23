@@ -1,0 +1,45 @@
+footer{}
+//====================================================================================================
+.footer {
+	&__row {
+		@include flexbox();
+		justify-content: flex-start;
+		align-items: center;
+		margin: 34px 0 27px;
+	}
+	&__copyright {
+		flex: 0 0 50%;
+		color: #4d4d4d;
+		font-family: 'PT Sans', sans-serif;
+		font-size: 15px;
+		font-weight: 400;
+		text-align: left;
+		span {
+			text-decoration: underline;
+		}
+	}
+	&__logo {
+		flex: 0 0 50%;
+		width: 156px;
+		height: 65px;
+		text-align: right;
+	}
+	&__logo-item {}
+	@media (max-width: $md3_5+px) {
+		&__row {
+			flex-direction: column;
+			align-items: center;
+		}
+		&__copyright {
+			@include flexorder(2);
+			margin-bottom: 20px;
+		}
+		&__logo {
+			@include tr(-15%, 0, 0);
+			@include flexorder(1);
+			margin-bottom: 30px;
+		}
+	}
+}
+//====================================================================================================
+
