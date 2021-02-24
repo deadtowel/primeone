@@ -1,6 +1,13 @@
 footer{}
 //====================================================================================================
 .footer {
+	.footer-container {
+		width: 870px;
+		max-width:870px;
+		margin: 0 auto;
+		width: 100%;
+		@media (max-width:$md1+px){max-width: 730px;}
+	}
 	&__row {
 		@include flexbox();
 		justify-content: flex-start;
