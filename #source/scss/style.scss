@@ -80,15 +80,13 @@ h1,h2,h3,h4,h5,h6{font-weight: inherit;font-size: inherit;}
 	margin: 0 auto;
 	width: 100%;
 	@media (max-width:$md1+px){max-width: 730px;}
-	// @media (max-width:$md2+px){max-width: 750px;}
-	// @media (max-width:$md3+px){max-width: none;padding:0 10px;*/
+	@media (max-width:$md3+px){max-width: 600px;}
+	@media (max-width:$md3_5+px){max-width: 470px}
+	@media (max-width:$md4+px){max-width: 300px}
 }
 //</ОСНОВНАЯ СЕТКА>===========================================================================================================
 
 //<ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>====================================================================================================
-@import "baguetteBox.scss";
-@import "popover.min.scss";
-@import "popup.scss";
 @import "header.scss";
 @import "footer.scss";
 //</ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>====================================================================================================
@@ -215,8 +213,11 @@ h1,h2,h3,h4,h5,h6{font-weight: inherit;font-size: inherit;}
 
 		}
 	}
+	@media (max-width: $md3+px) {
+		padding: 50px 0 0;	
+	}
 	@media (max-width: $md4+px) {
-		
+		padding: 30px 0 0;	
 		&__item {
 			flex: 0 0 100%;
 
@@ -224,8 +225,7 @@ h1,h2,h3,h4,h5,h6{font-weight: inherit;font-size: inherit;}
 	}
 }
 .item {
-	// flex: 0 0 25%;
-	margin-bottom: 70px;
+	margin-bottom: 30px;
 	&__image {
 		padding: 0 0 100% 0;
 		margin-bottom: 25px;
@@ -266,6 +266,18 @@ h1,h2,h3,h4,h5,h6{font-weight: inherit;font-size: inherit;}
 		}
 		&__buttons {
 			margin-bottom: 50px;
+		}
+	}
+	@media (max-width: $md1+px) {
+		margin-bottom: 0;
+		&__title {
+			margin-bottom: 20px;
+		}
+		&__descr {	
+			margin-bottom: 20px;
+		}
+		&__buttons {
+			margin-bottom: 30px;
 		}
 	}
 }
