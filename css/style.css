@@ -355,6 +355,17 @@ h1, h2, h3, h4, h5, h6 {
     left: 0;
   }
 }
+.footer .footer-container {
+  width: 870px;
+  max-width: 870px;
+  margin: 0 auto;
+  width: 100%;
+}
+@media (max-width: 900px) {
+  .footer .footer-container {
+    max-width: 730px;
+  }
+}
 .footer__row {
   display: flex;
   font-size: 0;
