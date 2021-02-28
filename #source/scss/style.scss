@@ -226,6 +226,8 @@ h1,h2,h3,h4,h5,h6{font-weight: inherit;font-size: inherit;}
 }
 .item {
 	margin-bottom: 30px;
+	@include flexbox();
+	flex-direction: column;
 	&__image {
 		padding: 0 0 100% 0;
 		margin-bottom: 25px;
@@ -244,6 +246,8 @@ h1,h2,h3,h4,h5,h6{font-weight: inherit;font-size: inherit;}
 		margin-bottom: 36px;
 	}
 	&__descr {
+		max-width: 185px;
+		flex: 1 1 auto;
 		color: #000000;
 		font-family: 'PT Sans', sans-serif;
 		font-size: 15px;
@@ -340,7 +344,11 @@ h1,h2,h3,h4,h5,h6{font-weight: inherit;font-size: inherit;}
 		left: 50%;
 		@include tr(-50%, -50%, 0);
 	}
-	&__text {}
+	&__text {
+		@include flexbox();
+		flex-direction: column;
+		justify-content: space-between;
+	}
 	&__title {
 		color: #000000;
 		font-family: 'AkzidenzGroteskPro';
@@ -349,7 +357,7 @@ h1,h2,h3,h4,h5,h6{font-weight: inherit;font-size: inherit;}
 		text-align: left;
 		text-transform: uppercase;
 		letter-spacing: 2.5px;
-		margin-bottom: 25px;
+		// margin-bottom: 25px;
 	}
 	&__descr {
 		color: #000000;
